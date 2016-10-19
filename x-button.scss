@@ -1,0 +1,50 @@
+	@import 'bourbon'; // http://bourbon.io/
+  
+  .cd-close {
+		/* 'X' icon to close the content block -  mobile only */
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 44px;
+		width: 44px;
+
+		/* image replacement */
+		overflow: hidden;
+		text-indent: 100%;
+		white-space: nowrap;
+		color: transparent;
+		
+		@include transform(scale(0));
+		@include transition(transform .2s);
+
+		&::after, &::before {
+			/* these are the 2 lines of the 'X' icon */
+			content: '';
+			position: absolute;
+			left: 50%;
+    		top: 50%;
+			width: 2px;
+			height: 24px;
+			background-color: $color-1;
+			
+			/* Force Hardware Acceleration */
+    		@include backface-visibility(hidden);
+    		@include transform(translateZ(0));
+		}
+
+		&::after {
+			@include transform(translateX(-50%) translateY(-50%) rotate(45deg));
+		}
+
+		&::before {
+			@include transform(translateX(-50%) translateY(-50%) rotate(-45deg));
+		}
+
+		&.is-scaled-up {
+			@include transform(scale(1));
+
+			.no-touch &:hover {
+				@include transform(scale(1.2));
+			}
+		}
+	}
