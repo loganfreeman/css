@@ -1,0 +1,48 @@
+
+.block-navigation {
+	/* this is the slider navigation - desktop version only */
+	display: none;
+
+	@include MQ(M) {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 50%;
+		@include clearfix;
+
+		li {
+			width: 50%;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			background-color: rgba(#000, .5);
+			@include transition(background .2s);
+
+			&:hover {
+				background-color: rgba(#000, .7);
+			}
+		}
+
+		li:first-of-type {
+			float: left;
+		}
+
+		li:last-of-type {
+			float: right;
+		}
+
+		button {
+			display: block;
+			height: 100%;
+			width: 100%;
+			color: $color-5;
+			@include font-smoothing;
+
+			&.inactive {
+				opacity: .3;
+				cursor: not-allowed;
+			}
+		}
+	}	
+} 
