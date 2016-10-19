@@ -1,0 +1,4 @@
+			&.move-left {
+				/* this is the item hidden on the left */
+				@include transform(translateX(-100%));
+			}
