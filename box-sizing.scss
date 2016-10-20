@@ -1,0 +1,5 @@
+@import 'bourbon'; // http://bourbon.io/
+
+*, *::after, *::before {
+	@include box-sizing(border-box);
+}
