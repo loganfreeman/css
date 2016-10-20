@@ -1,0 +1,43 @@
+.cd-close-product-tour {
+	/* close icon - product tour */
+	display: none;
+
+	@include MQ(L) {
+		display: block;
+		position: absolute;
+		top: 40px;
+		right: 0;
+		height: 40px;
+		width: 40px;
+		opacity: 0;
+		visibility: hidden;
+
+		.no-touch &:hover {
+			opacity: .8;
+		}
+
+		&::after, &::before {
+			/* these are used to create the 'X' icon */
+			content: '';
+			height: 40px;
+			width: 2px;
+			position: absolute;
+			left: 50%;
+    		top: 50%;
+    		background-color: $color-3;
+		}
+
+		&::after {
+			@include transform(translateX(-50%) translateY(-50%) rotate(45deg));
+		}
+
+		&::before {
+			@include transform(translateX(-50%) translateY(-50%) rotate(-45deg));
+		}
+
+		&.is-visible {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
