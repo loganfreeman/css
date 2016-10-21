@@ -1,0 +1,138 @@
+.cd-single-point {
+	position: absolute;
+	border-radius: 50%;
+
+	> a {
+		position: relative;
+		display: block;
+		width: 30px;
+		height: 30px;
+		border-radius: inherit;
+		background: $color-2;
+		box-shadow: 0 0 10px rgba(#000, .5), inset 0 1px 0 rgba(#fff, .3);
+		z-index: 2;
+		@include transition(background-color .3s);
+
+		&::after, &:before {
+			/* rotating plus icon */
+			content: '';
+			position: absolute;
+			@include center;
+			background-color: $color-3;
+			@include transition(transform .3s);
+		}
+
+		&::after {
+			height: 2px;
+			width: 12px;
+		}
+
+		&::before {
+			height: 12px;
+			width: 2px;
+		}
+	}
+	
+	&::after {
+		/* this is used to create the pulse animation */
+		content: '';
+		position: absolute;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		border-radius: inherit;
+		background-color: transparent;
+		@include animation(cd-pulse 2s infinite);
+	}
+
+	&:nth-of-type(1) { // set these positions of interest points according to your product image
+		bottom: 58%;
+		right: 40%;
+	}
+
+	&:nth-of-type(2) {
+		top: 6%;
+		right: 5%;
+	}
+
+	&:nth-of-type(3) {
+		top: 6%;
+		left: 14%;
+	}
+
+	&.is-open {
+
+		> a {
+			background-color: lighten($color-1, 20%);
+
+			&::after, &::before {
+				@include transform(translateX(-50%) translateY(-50%) rotate(135deg) );
+			}	
+		}
+
+		&::after {
+			/* remove pulse effect */
+			display: none;
+		}
+
+		.cd-more-info {
+			visibility: visible;
+			opacity: 1;
+			@include transform(scale(1));
+			@include transition(opacity .3s 0s, visibility 0s 0s, transform .3s 0s, top .3s 0s, bottom .3s 0s, left .3s 0s, right .3s 0s);
+		}
+	}
+
+	&.visited {
+
+		> a {
+			background-color: lighten($color-1, 20%);	
+		}
+
+		&::after {
+			/* pulse effect no more active on visited elements */
+			display: none;
+		}
+	}
+
+	@include MQ(S) {
+
+		&.is-open .cd-more-info {
+			
+			&.cd-left { 
+				right: 140%;
+			}
+
+			&.cd-right { 
+				left: 140%;
+			}
+
+			&.cd-top {
+				bottom: 140%;
+			}
+
+			&.cd-bottom {
+				top: 140%;
+			}
+		}
+	}
+
+	@include MQ(L) {
+		@include transform(scale(0));
+
+		&::after {
+			@include animation(none);
+		}
+
+		.points-enlarged & {
+			@include transform(scale(1));
+			@include animation(cd-bounce .4s);
+		}
+
+		.points-pulsing &::after {
+			@include animation(cd-pulse 2s infinite);
+		}
+	}
+}
