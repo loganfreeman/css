@@ -1,0 +1,25 @@
+.cd-gallery {
+	@include clearfix;
+
+	&::before {
+		/* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
+		display: block;
+		content: '';
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background-color: rgba($color-5, .6);
+		opacity: 0;
+		visibility: hidden;
+		@include transition(opacity  $fold-animation $fold-content-animation, visibility 0s $fold-animation+$fold-content-animation);
+	}
+
+	.fold-is-open &::before {
+		visibility: visible;
+		opacity: 1;
+		@include transition(opacity  $fold-animation 0s, visibility 0s 0s);
+	}
+}
