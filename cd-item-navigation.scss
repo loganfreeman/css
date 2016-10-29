@@ -1,0 +1,49 @@
+.cd-item-navigation {
+
+	a {
+		position: absolute;
+		top: 50%;
+		@include transform(translateY(-50%));
+		width: 36px;
+		height: 66px;
+		background-color: rgba($color-3, .4);
+		background-image: url('../img/cd-icon-arrow.svg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		z-index: 4;
+		display: none;
+		@include border-radius;
+
+		.no-touch &:hover {
+			background-color: rgba($color-3, .6);
+		}
+
+		&.visible {
+			display: block;
+			@include animation(cd-fade-in .4s);
+		}
+	}
+
+	li:nth-child(1) a {
+		left: 14px;
+		@include transform(translateY(-50%) rotate(180deg));
+	}
+
+	li:nth-child(2) a {
+		right: 14px;
+	}
+
+	.no-csstransitions & {
+		display: none;
+	}
+}
+
+@include keyframes(cd-fade-in) {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
