@@ -1,0 +1,34 @@
+/* -------------------------------- 
+
+Back to top 
+
+-------------------------------- */
+
+.cd-top {
+	position: fixed;
+	z-index: 3;
+	bottom: 40px;
+	right: 5%;
+	display: inline-block;
+	height: 48px;
+	width: 48px;
+	/* replace text with image */
+	overflow: hidden; 
+	text-indent: 100%;
+	white-space: nowrap;
+	background: rgba(#000, .6) url(../img/cd-icon-arrow.svg) no-repeat center center;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .3s, visibility .3s;
+
+	&.is-visible {
+		/* the button becomes visible */
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&:hover {
+		background-color: rgba(#000, 1);
+		opacity: 1;
+	}
+}
