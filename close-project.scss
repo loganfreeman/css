@@ -1,0 +1,41 @@
+	.close-project {
+		/* this is the 'X' icon - visible when a project has been selected */
+		position: absolute;
+		z-index: 2;
+		top: 24px;
+		right: 5%;
+		/* replace text with image */
+		color: transparent;
+		white-space: nowrap;
+		text-indent: 100%;
+		overflow: hidden;
+		height: 48px;
+		width: 48px;
+		border-radius: 50%;
+		background: rgba(#000, .6);
+		transform: scale(0);
+		transition: transform .3s 0s;
+
+		&:hover {
+			background: rgba(#000, 1);
+		}
+
+		&::after, &::before {
+			/* the 'X' lines */
+			content: '';
+			position: absolute;
+			width: 18px;
+			height: 2px;
+			top: 50%;
+			left: 50%;
+			background: $color-3;
+		}
+
+		&::before {
+			transform: translateX(-50%) translateY(-50%) rotate(45deg);
+		}
+
+		&::after {
+			transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+		}
+	}
