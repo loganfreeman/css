@@ -1,0 +1,45 @@
+#cd-gallery-items {
+	margin-top: 1.5em;
+
+	> li {
+		position: relative;
+		margin-bottom: 6em;
+
+		img {
+			width: 100%;
+			display: block;
+		}
+	}
+
+	@include MQ(M) {
+		margin-top: 2em;
+
+		> li {
+			@include column(.48); // see how this mixin works inside partials > _layout.scss
+			margin-right: 4%;
+			margin-bottom: 6.5em;
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+	}
+
+	@include MQ(L) {
+		margin-top: 2.5em;
+
+		> li {
+			@include column(.31);
+			margin-bottom: 7em;
+			margin-right: 3.5%;
+
+			&:nth-child(2n) {
+				margin-right: 3.5%;
+			}
+
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+		}
+	}
+}
