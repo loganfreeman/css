@@ -1,0 +1,20 @@
+.cd-overlay {
+	/* shadow layer visible when navigation is open */
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background-color: rgba(#000, .35);
+	visibility: hidden;
+	opacity: 0;
+	@include backface-visibility(hidden);
+	@include transition(opacity $animation-duration 0s, visibility 0s $animation-duration);
+	
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+		@include transition(opacity $animation-duration 0s, visibility 0s 0s);
+	}
+}
