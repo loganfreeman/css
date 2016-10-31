@@ -1,0 +1,55 @@
+/* -------------------------------- 
+
+xnavigation 
+
+-------------------------------- */
+
+.cd-nav-container {
+	position: fixed;
+	z-index: 4;
+	top: 0;
+	right: 0;
+	width: 80%;
+	height: 100%;
+	overflow-y: auto;
+	background-color: $color-7;
+
+	/* Force Hardware Acceleration in WebKit */
+	@include transform(translateZ(0));
+	@include backface-visibility(hidden);
+
+	@include transform(translateX(100%));
+	@include transition(transform $animation-duration 0s, box-shadow 0s $animation-duration); // see partials > _variables.scss
+
+	&.is-visible {
+		@include transform(translateX(0));
+		-webkit-overflow-scrolling: touch;
+		box-shadow: -4px 0 30px rgba(#000, .2);
+		@include transition(transform $animation-duration 0s, box-shadow 0s 0s);
+	}
+
+	header {
+		padding: 1.5em 0 0 6.25%;
+		height: 68px;
+		position: relative;
+	}
+
+	h3 {
+		font: {
+			size: 1.6rem;
+			weight: bold;
+			family: $secondary-font;
+		}
+		text-transform: uppercase;
+		color: $color-2;
+	}
+
+	@include MQ(M) {
+		width: 70%;
+		
+		header {
+			height: 116px;
+			padding-top: 3em;
+		}
+	}
+}
