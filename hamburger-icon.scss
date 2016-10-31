@@ -1,49 +1,77 @@
-.cd-nav-container {
+.cd-nav-trigger {
+	/* hamburger icon */
 	position: fixed;
-	z-index: 4;
-	top: 0;
-	right: 0;
-	width: 80%;
-	height: 100%;
-	overflow-y: auto;
-	background-color: $color-7;
+	z-index: 3;
+	top: 12px;
+	right: 5%;
+	height: 44px;
+	width: 44px;
+	
+	/* image replacement */
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
 
-	/* Force Hardware Acceleration in WebKit */
-	@include transform(translateZ(0));
-	@include backface-visibility(hidden);
+	@include transition(transform 0.2s);
 
-	@include transform(translateX(100%));
-	@include transition(transform $animation-duration 0s, box-shadow 0s $animation-duration); // see partials > _variables.scss
+	span {
+		/* icon created in CSS */
+		position: absolute;
+		@include center; // mixin inside partials > _mixins.scss
+		width: 32px;
+		height: 3px;
+		background-color: darken($color-2, 40%);
 
-	&.is-visible {
-		@include transform(translateX(0));
-		-webkit-overflow-scrolling: touch;
-		box-shadow: -4px 0 30px rgba(#000, .2);
-		@include transition(transform $animation-duration 0s, box-shadow 0s 0s);
-	}
+		&::before, &:after {
+			/* upper and lower lines of the menu icon */
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%; 
+			background-color: inherit;
 
-	header {
-		padding: 1.5em 0 0 6.25%;
-		height: 68px;
-		position: relative;
-	}
+			/* Force Hardware Acceleration in WebKit */
+			@include transform(translateZ(0));
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
 
-	h3 {
-		font: {
-			size: 1.6rem;
-			weight: bold;
-			family: $secondary-font;
+			@include transition(transform 0.2s, width 0.2s);
 		}
-		text-transform: uppercase;
-		color: $color-2;
+
+		&::before {
+			@include transform-origin(right top);
+			@include transform(translateY(-10px));
+		}
+
+		&::after {
+			@include transform-origin(right bottom);
+			@include transform(translateY(10px));
+		}
+
 	}
 
-	@include MQ(M) {
-		width: 70%;
-		
-		header {
-			height: 116px;
-			padding-top: 3em;
+	.no-touch &:hover {
+		/* rotate trigger on hover */
+		@include transform(rotate(180deg));
+
+		span::after, 
+		span::before {
+			/* animate arrow --> from hamburger to arrow */
+			width: 50%;
 		}
+
+		span::before {
+			@include transform(translateX(1px) translateY(1px) rotate(45deg));
+		}
+
+		span::after {
+			@include transform(translateX(1px) translateY(-1px) rotate(-45deg));
+		}
+	}  
+
+	@include MQ(L) {
+		top: 38px;
 	}
 }
