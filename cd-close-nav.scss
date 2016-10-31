@@ -1,0 +1,45 @@
+.cd-close-nav {
+	/* 'X' close icon */
+	position: absolute;
+	height: 44px;
+	width: 44px;
+	/* set the right position value so that it overlaps the .cd-nav-trigger*/
+	right: 6.25%;
+	@include center(y);
+	
+	/* image replacement */
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+
+	@include transition(opacity .2s);
+
+	&::after, 
+	&::before {
+		/* lines of 'X' icon */
+		content: '';
+		position: absolute;
+		height: 3px;
+		width: 32px;
+		left: 50%;
+    	top: 50%;
+		background-color: $color-2;	
+		@include backface-visibility(hidden);
+	}
+
+	&::after {
+		@include transform(translateX(-50%) translateY(-50%) rotate(45deg));
+	}
+
+	&::before {
+		@include transform(translateX(-50%) translateY(-50%) rotate(-45deg));
+	}
+
+	.no-touch &:hover {
+		opacity: .8;
+	}
+
+	@include MQ(M) {
+		right: 7.14%;
+	}
+}
