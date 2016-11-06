@@ -1,0 +1,75 @@
+/* -------------------------------- 
+
+Intro page
+
+-------------------------------- */
+
+.cd-intro-block {
+	position: relative;
+	z-index: 2;
+	height: 100vh;
+	width: 100%;
+	background-color: tint($color-1, 10%);
+	/* used to vertical align its content */
+	display: table;
+
+	@include transition(transform $animation-duration);
+	@include transition-timing-function(cubic-bezier(.67,.15,.83,.83));
+
+	&::after {
+		/* arrow icon visible when .cd-intro-block slides out */
+		content: '';
+		position: absolute;
+		@include center;
+		top: 95%;
+		height: 24px;
+		width: 24px;
+		background: url(../img/cd-arrow-back.svg) no-repeat center center;
+		opacity: 0;
+		@include transition(opacity .2s);
+	}
+
+	.content-wrapper {
+		/* vertical align the .cd-intro-block content */
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	h1 {
+		width: 90%;
+		margin: 0 auto .6em;
+
+		font-size: 2.4rem;
+		color: $color-3;
+		@include font-smoothing;
+	}
+
+	&.projects-visible {
+		/* translate the .cd-intro-block element to reveal the projects slider */
+		@include transform(translateY(-90%));
+		box-shadow: 0 4px 40px rgba(#000, .6);
+		cursor: pointer; 
+
+		&:after {
+			/* show arrow icon */
+			opacity: 1;
+		}
+	}
+
+	@include MQ(M) {
+
+		&::after {
+			top: 97.5%;
+		}
+
+		h1 {
+			font-size: 4.4rem;
+			font-weight: 300;
+		}
+
+		&.projects-visible {
+			@include transform(translateY(-95%));
+		}
+	}
+}
