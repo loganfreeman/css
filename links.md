@@ -1,2 +1,3 @@
 - [loader](https://github.com/ConnorAtherton/loaders.css)
 - [Effeckt.css](https://github.com/h5bp/Effeckt.css)
+- [animate.css](https://github.com/daneden/animate.css)
