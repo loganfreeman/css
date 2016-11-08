@@ -5,3 +5,4 @@ Links
 - [Block, Inline and Inline-block Displays](http://karenmenezes.com/inlineblockelements/)
 - [Fighting the Space Between Inline Block Elements](https://css-tricks.com/fighting-the-space-between-inline-block-elements/)
 - [content model](http://vanseodesign.com/web-design/html5-content-models/)
+- [The HTML5 outline algorithm](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines)
