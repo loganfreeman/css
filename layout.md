@@ -7,3 +7,4 @@ Links
 - [content model](http://vanseodesign.com/web-design/html5-content-models/)
 - [The HTML5 outline algorithm](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines)
 - [html5 gallery](http://html5gallery.com/)
+- [div is not dead](http://html5doctor.com/you-can-still-use-div/)
