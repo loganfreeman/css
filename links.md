@@ -2,3 +2,4 @@
 - [Effeckt.css](https://github.com/h5bp/Effeckt.css)
 - [animate.css](https://github.com/daneden/animate.css)
 - [magic](https://github.com/miniMAC/magic)
+- [css reference](https://github.com/loganfreeman/css-reference)
